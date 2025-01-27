@@ -1,9 +1,12 @@
+from typing import Optional, List
+
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core import SummaryIndex, VectorStoreIndex
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.query_engine.router_query_engine import RouterQueryEngine
 from llama_index.core.selectors import LLMSingleSelector
-from llama_index.core.tools import QueryEngineTool
+from llama_index.core.tools import QueryEngineTool, FunctionTool
+from llama_index.core.vector_stores import MetadataFilters, FilterCondition
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
 
