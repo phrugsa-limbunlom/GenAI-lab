@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 from typing import Optional, List
 
 from llama_index.core import SimpleDirectoryReader
@@ -122,3 +124,17 @@ def get_doc_tools(
     )
 
     return vector_query_tool, summary_tool
+
+
+def get_paper_tools(papers: List[str]):
+    current_path = os.getcwd()
+
+    paper_to_tools_dict = {}
+    for paper in papers:
+        paper = os.path.join(current_path, "document", paper)
+
+        print(f"Getting tools for paper: {paper}")
+
+        vector_tool, summary_tool = get_doc_tools(paper, Path(paper).stem)
+
+        paper_to_tools_dict[paper] = [vector_tool, summary_tool]
