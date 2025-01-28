@@ -1,3 +1,5 @@
+import os
+
 from llama_index.core import SimpleDirectoryReader, Settings, SummaryIndex, VectorStoreIndex
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.query_engine import RouterQueryEngine
@@ -17,14 +19,18 @@ if __name__ == '__main__':
     nest_asyncio.apply()
 
     # load data
-    documents = SimpleDirectoryReader(input_files=["metagpt.pdf"]).load_data()
+
+    current_dir = os.getcwd()
+    file_path = os.path.join(current_dir, "document", "metagpt.pdf")
+
+    documents = SimpleDirectoryReader(input_files=[file_path]).load_data()
 
     # define llm and embedding model
     splitter = SentenceSplitter(chunk_size=1024)
     nodes = splitter.get_nodes_from_documents(documents)
 
     Settings.llm = OpenAI(api_key=OPENAI_API_KEY, model="gpt-3.5-turbo")
-    Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
+#    Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
 
     # define summary and vector index
     summary_index = SummaryIndex(nodes)
@@ -66,7 +72,7 @@ if __name__ == '__main__':
     print(len(response.source_nodes))
 
     # call from utils
-    query_engine = get_router_query_engine("metagpt.pdf")
+    query_engine = get_router_query_engine(file_path)
 
     response = query_engine.query("Tell me about the ablation study results?")
     print(str(response))

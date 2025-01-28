@@ -1,3 +1,5 @@
+import os
+
 from llama_index.core.agent import FunctionCallingAgentWorker, AgentRunner
 
 from helper import get_openai_api_key
@@ -8,7 +10,11 @@ from llama_index.llms.openai import OpenAI
 if __name__ == '__main__':
     OPENAI_API_KEY = get_openai_api_key()
     nest_asyncio.apply()
-    vector_tool, summary_tool = get_doc_tools("metagpt.pdf", "metagpt")
+
+    current_dir = os.getcwd()
+    file_path = os.path.join(current_dir, "document", "metagpt.pdf")
+
+    vector_tool, summary_tool = get_doc_tools(file_path, "metagpt")
 
     llm = OpenAI(api_key=OPENAI_API_KEY, model="gpt-3.5-turbo", temperature=0)
 

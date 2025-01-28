@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 import nest_asyncio
@@ -68,7 +69,9 @@ if __name__ == '__main__':
     print(str(response))
 
     # load document
-    documents = SimpleDirectoryReader(input_files=["metagpt.pdf"]).load_data()
+    current_dir = os.getcwd()
+    file_path = os.path.join(current_dir, "document", "metagpt.pdf")
+    documents = SimpleDirectoryReader(input_files=[file_path]).load_data()
 
     splitter = SentenceSplitter(chunk_size=1024)
     nodes = splitter.get_nodes_from_documents(documents)
