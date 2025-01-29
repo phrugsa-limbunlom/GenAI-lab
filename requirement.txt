@@ -6,3 +6,5 @@ python-dotenv
 llama-index
 llama-index-llms-openai
 llama-index-embeddings-openai
+
+neo4j
