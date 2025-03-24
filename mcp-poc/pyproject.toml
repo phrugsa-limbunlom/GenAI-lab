@@ -1,0 +1,18 @@
+[project]
+name = "mcp-poc"
+version = "0.1.0"
+description = "MCP POC project with count-r tool"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_poc"] 
