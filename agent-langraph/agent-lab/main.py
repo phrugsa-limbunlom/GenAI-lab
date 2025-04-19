@@ -59,37 +59,37 @@ if __name__ == "__main__":
 
     agent = Agent(prompt)
 
-    result = agent("How much does a toy poodle weight?")
-    print(result)
-
-    result = average_dog_weight("Toy Poodle")
-    print(result)
-
-    next_prompt = average_dog_weight("Toy Poodle")
-    agent(next_prompt)
-    print(agent.messages)
-
-    agent = Agent(prompt)
-
-    question = """I have 2 dogs, a border collie and a scottish terrier. \
-    What is their combined weight"""
-
-    next_prompt = "Observation: {}".format(average_dog_weight("Border Collie"))
-    print(next_prompt)
-    agent(next_prompt)
-    print(agent.messages)
-
-    next_prompt = "Observation: {}".format(average_dog_weight("Scottish Terrier"))
-    print(next_prompt)
-    agent(next_prompt)
-    print(agent.messages)
-
-    next_prompt = "Observation: {}".format(eval("37 + 20"))
-    print(next_prompt)
-    agent(next_prompt)
-    print(agent.messages)
-
-    # loop
+    # result = agent("How much does a toy poodle weight?")
+    # print(result)
+    #
+    # result = average_dog_weight("Toy Poodle")
+    # print(result)
+    #
+    # next_prompt = average_dog_weight("Toy Poodle")
+    # agent(next_prompt)
+    # print(agent.messages)
+    #
+    # agent = Agent(prompt)
+    #
+    # question = """I have 2 dogs, a border collie and a scottish terrier. \
+    # What is their combined weight"""
+    #
+    # next_prompt = "Observation: {}".format(average_dog_weight("Border Collie"))
+    # print(next_prompt)
+    # agent(next_prompt)
+    # print(agent.messages)
+    #
+    # next_prompt = "Observation: {}".format(average_dog_weight("Scottish Terrier"))
+    # print(next_prompt)
+    # agent(next_prompt)
+    # print(agent.messages)
+    #
+    # next_prompt = "Observation: {}".format(eval("37 + 20"))
+    # print(next_prompt)
+    # agent(next_prompt)
+    # print(agent.messages)
+    #
+    # # loop
     action_re = re.compile('^Action: (\w+): (.*)$')  # python regular expression to selection action
 
 

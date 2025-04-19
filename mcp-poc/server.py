@@ -108,6 +108,10 @@ def create_chroma_database(name: str, document: Union[BinaryIO, bytes]) -> str:
         return "Chroma database created successfully"
     except Exception as e:
         return f"Error: Failed to create chroma database - {str(e)}"
+    
+def search_google_map(image: bytes ) -> 
+    """Search google map location from image"""
+
             
 
 if __name__ == "__main__":
