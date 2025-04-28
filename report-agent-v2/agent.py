@@ -123,7 +123,7 @@ write_report_agent = LlmAgent(
     name="WriteReportAgent",
     model=GEMINI_MODEL,
     include_contents='none',
-    instruction=f"""You are a Creative Writing Assistant tasked with writing a detailed report from the given outline.
+    instruction=f"""You are a Creative Writing Assistant tasked with writing a detailed report for each section (4-5 paragraphs) from the given outline.
     
     **Outline to write a Detailed Report:**
      ```
